@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="CharactersCell" customModule="Marvel" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r6b-fC-7MA">
+                        <rect key="frame" x="15" y="15" width="290" height="270"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mEm-uS-QXU">
+                                <rect key="frame" x="0.0" y="0.0" width="290" height="270"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cartoonIcon" translatesAutoresizingMaskIntoConstraints="NO" id="eWa-JU-S9w" customClass="MarvelImageView" customModule="Marvel" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="290" height="270"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="270" id="M9x-Bm-CZW"/>
+                                        </constraints>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="joh-L2-D1o">
+                                        <rect key="frame" x="0.0" y="190.5" width="290" height="79.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ua1-vK-ce2">
+                                                <rect key="frame" x="15" y="15" width="260" height="54.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Abomination (Emil Blonsky)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NFy-0F-DLu">
+                                                        <rect key="frame" x="0.0" y="0.0" width="260" height="19.5"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVa-oz-Zh9">
+                                                        <rect key="frame" x="0.0" y="24.5" width="260" height="30"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <string key="text">Formely know as Emil Blonsky, a spy of Soviet Yugoslavian origin working for the KGM, the Abomination gained his powers after receiving a dose of gama radiation similar to that which transformed Bruce Banner into the incredible Hulk.</string>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                        <color key="textColor" red="0.63529411764705879" green="0.63529411764705879" blue="0.63529411764705879" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="79.5" id="A3w-rL-lOm"/>
+                                            <constraint firstAttribute="trailing" secondItem="ua1-vK-ce2" secondAttribute="trailing" constant="15" id="Kyc-Vm-8kN"/>
+                                            <constraint firstItem="ua1-vK-ce2" firstAttribute="top" secondItem="joh-L2-D1o" secondAttribute="top" constant="15" id="jfL-Re-K7G"/>
+                                            <constraint firstAttribute="bottom" secondItem="ua1-vK-ce2" secondAttribute="bottom" constant="10" id="qz0-pD-i59"/>
+                                            <constraint firstItem="ua1-vK-ce2" firstAttribute="leading" secondItem="joh-L2-D1o" secondAttribute="leading" constant="15" id="zqh-OE-l5L"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="eWa-JU-S9w" firstAttribute="leading" secondItem="mEm-uS-QXU" secondAttribute="leading" id="AIt-0f-BaC"/>
+                                    <constraint firstAttribute="trailing" secondItem="joh-L2-D1o" secondAttribute="trailing" id="Qw0-ld-4og"/>
+                                    <constraint firstItem="joh-L2-D1o" firstAttribute="leading" secondItem="mEm-uS-QXU" secondAttribute="leading" id="icc-fP-sTL"/>
+                                    <constraint firstAttribute="bottom" secondItem="eWa-JU-S9w" secondAttribute="bottom" id="lzP-IB-adb"/>
+                                    <constraint firstAttribute="bottom" secondItem="joh-L2-D1o" secondAttribute="bottom" id="tZw-Aw-vuQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="eWa-JU-S9w" secondAttribute="trailing" id="wUO-Pt-n2B"/>
+                                    <constraint firstItem="eWa-JU-S9w" firstAttribute="top" secondItem="mEm-uS-QXU" secondAttribute="top" id="yIv-yI-Lmb"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="mEm-uS-QXU" secondAttribute="bottom" id="T63-wq-jco"/>
+                            <constraint firstItem="mEm-uS-QXU" firstAttribute="leading" secondItem="r6b-fC-7MA" secondAttribute="leading" id="X7T-dc-mnR"/>
+                            <constraint firstAttribute="trailing" secondItem="mEm-uS-QXU" secondAttribute="trailing" id="fqH-Be-2dy"/>
+                            <constraint firstItem="mEm-uS-QXU" firstAttribute="top" secondItem="r6b-fC-7MA" secondAttribute="top" id="xYb-MF-D8y"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                <size key="value" width="0.0" height="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="r6b-fC-7MA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="Fix-64-va5"/>
+                    <constraint firstAttribute="bottom" secondItem="r6b-fC-7MA" secondAttribute="bottom" constant="15" id="nIa-e4-pMk"/>
+                    <constraint firstAttribute="trailing" secondItem="r6b-fC-7MA" secondAttribute="trailing" constant="15" id="o2t-fI-V1H"/>
+                    <constraint firstItem="r6b-fC-7MA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="pd8-T2-6B5"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="charactersDesciptionLabel" destination="eVa-oz-Zh9" id="udj-gY-mPu"/>
+                <outlet property="charactersImageView" destination="eWa-JU-S9w" id="pZy-Jq-d9Y"/>
+                <outlet property="charactersNameLabel" destination="NFy-0F-DLu" id="EQ2-DN-ylU"/>
+                <outlet property="charactersView" destination="mEm-uS-QXU" id="HfA-R9-Yl8"/>
+                <outlet property="containerCharactersView" destination="r6b-fC-7MA" id="o6w-tL-Obe"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="98.4375"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="cartoonIcon" width="300" height="210"/>
+    </resources>
+</document>

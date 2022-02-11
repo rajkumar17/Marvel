@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="CharactersDetailsCell" customModule="Marvel" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="252" image="cartoonIcon" translatesAutoresizingMaskIntoConstraints="NO" id="gAE-Oo-PYT" customClass="MarvelImageView" customModule="Marvel" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="450"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="450" id="M6X-zs-nbH"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Abomination (Emil Blonsky) " lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UaT-Ld-U7A">
+                        <rect key="frame" x="15" y="460" width="384" height="24"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="AIM is a terrorist organization bent on destroying the world." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCy-Cw-ZVL">
+                        <rect key="frame" x="15" y="494" width="384" height="37.5"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                        <color key="textColor" red="0.63529411764705879" green="0.63529411764705879" blue="0.63529411764705879" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="eCy-Cw-ZVL" secondAttribute="bottom" constant="15" id="FSi-sL-RCv"/>
+                    <constraint firstItem="UaT-Ld-U7A" firstAttribute="top" secondItem="gAE-Oo-PYT" secondAttribute="bottom" constant="10" id="RXc-sZ-4vK"/>
+                    <constraint firstItem="gAE-Oo-PYT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Vzu-OH-Utx"/>
+                    <constraint firstAttribute="trailing" secondItem="gAE-Oo-PYT" secondAttribute="trailing" id="YGU-2a-S5v"/>
+                    <constraint firstItem="eCy-Cw-ZVL" firstAttribute="top" secondItem="UaT-Ld-U7A" secondAttribute="bottom" constant="10" id="cCD-cU-qGZ"/>
+                    <constraint firstItem="UaT-Ld-U7A" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="dfG-WE-3fH"/>
+                    <constraint firstAttribute="trailing" secondItem="eCy-Cw-ZVL" secondAttribute="trailing" constant="15" id="mwb-2G-h4j"/>
+                    <constraint firstItem="gAE-Oo-PYT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="np5-Vw-mzX"/>
+                    <constraint firstItem="eCy-Cw-ZVL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="oAI-CK-CMe"/>
+                    <constraint firstAttribute="trailing" secondItem="UaT-Ld-U7A" secondAttribute="trailing" constant="15" id="pF2-Yi-bJE"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="characterDescriptionLabel" destination="eCy-Cw-ZVL" id="7Mt-NM-fkX"/>
+                <outlet property="characterNameLabel" destination="UaT-Ld-U7A" id="knn-p1-k19"/>
+                <outlet property="imgView" destination="gAE-Oo-PYT" id="AO7-yv-mhT"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="98.4375"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="cartoonIcon" width="300" height="210"/>
+    </resources>
+</document>
