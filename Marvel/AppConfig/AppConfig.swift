@@ -30,15 +30,6 @@ final class AppConfiguration {
         return "?ts=\(AppConfiguration.dashedDate.string(from: Date()))&apikey=\(AppConfiguration.publicKey)&hash=b9effb6c7ac73fd8a46ecfda4b9eb630"
     }()
     
-//    var charactersDetailsUrl : String = {
-//        didSet {
-//            return "\(apiBaseURL)characters/\(path)"
-//        }
-//        willSet {
-//            
-//        }
-//    }
-    
     static let publicKey = "63263ce283a3d8d98e8343d67feaab10"
     static let privateKey = "3fdd7351dd49a660d7a298da2cba063f1c7d2f76"
 

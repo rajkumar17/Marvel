@@ -10,11 +10,11 @@ import UIKit
 class CharactersDetailViewController: UIViewController {
 
     //MARK:- IBOutlets
-    // Characters character name reference
+    // Characters character tableview reference
     @IBOutlet weak var characterDetailsTableView:UITableView!
-    
+    // Characters character name reference
     @IBOutlet weak var characterNameLabel: UILabel!
-    // Characters imageview reference
+    // Characters description reference
     @IBOutlet weak var characterDesciptionLabel: UILabel!
     // Characters imageview reference
     @IBOutlet weak var imgView: UIImageView!
