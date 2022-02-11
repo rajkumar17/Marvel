@@ -12,20 +12,22 @@ class CharactersDetailsViewModel {
     
     // Reference for usecase of marvelCharacters
     let useCase = MarvalCharactersUsecase()
-    // Reference for CharactersDetailsModel
-    var characterDetails:  DynamicValue<CharacterDetailsModel?> = DynamicValue(nil)
+    // Reference for CharactersModel
+    var characterDetails:  DynamicValue<CharactersModel?> = DynamicValue(nil)
+    // Reference for Characters error
+    var characterError:  DynamicValue<Error?> = DynamicValue(nil)
     
     // Method to fetch the characters list
     func fetchCharactersList(charactersID: Int) {
         useCase.getMarvalCharacterDetails(characterID: charactersID, completion: { [weak self] (characterDetailsModel) in
             guard let self = self else { return }
-            self.characterDetails.value = characterDetailsModel
+            switch characterDetailsModel {
+                case .success(let data):
+                    self.characterDetails.value = data
+                case .failure(let error):
+                self.characterError.value = error
+            }
         })
-    }
-    
-    // Method to get a results array
-    func noOfRow() -> Int {
-        return characterDetailsData()?.count ?? 0
     }
 
     // Method to get a results array

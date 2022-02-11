@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct CharacterDetailsModel: Codable {
     let code: Int?
     let status, copyright, attributionText, attributionHTML: String?

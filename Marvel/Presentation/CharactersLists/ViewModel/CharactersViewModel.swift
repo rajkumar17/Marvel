@@ -14,12 +14,19 @@ class CharactersViewModel {
     let useCase = MarvalCharactersUsecase()
     // Reference for CharactersModel
     var characters:  DynamicValue<CharactersModel?> = DynamicValue(nil)
+    // Reference for Characters error
+    var characterError:  DynamicValue<Error?> = DynamicValue(nil)
     
     // Method to fetch the characters list
     func fetchCharactersList() {
         useCase.getMarvalCharacters(completion: { [weak self] (charactersModel) in
             guard let self = self else { return }
-            self.characters.value = charactersModel
+            switch charactersModel {
+                case .success(let data):
+                    self.characters.value = data
+                case .failure(let error):
+                self.characterError.value = error
+            }
         })
     }
     

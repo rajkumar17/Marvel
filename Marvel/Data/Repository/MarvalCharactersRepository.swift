@@ -8,11 +8,12 @@
 import Foundation
 
 protocol MarvalCharactersRepositoryProtocol {
-    func getMarvalCharacters(completion:@escaping (completion))
-    func getMarvalCharacterDetails(characterID: Int, completion:@escaping ((CharacterDetailsModel?)->Void))
+    func getMarvalCharacters(completion: @escaping (completion))
+    func getMarvalCharacterDetails(characterID: Int, completion: @escaping (completion))
 }
 
 class MarvalCharactersRepository: MarvalCharactersRepositoryProtocol {
+    
     let networkRepository = MarvalCharactersNetworkRepository()
 
     func getMarvalCharacters(completion:@escaping (completion)) {
@@ -21,7 +22,7 @@ class MarvalCharactersRepository: MarvalCharactersRepositoryProtocol {
         })
     }
     
-    func getMarvalCharacterDetails(characterID: Int, completion:@escaping ((CharacterDetailsModel?)->Void)) {
+    func getMarvalCharacterDetails(characterID: Int, completion: @escaping completion) {
         networkRepository.getMarvalCharacterDetails(characterID: characterID, completion: { data in
             completion(data)
         })

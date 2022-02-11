@@ -10,11 +10,11 @@ import UIKit
 class CharactersListViewController: UIViewController {
 
     //MARK:- IBOutlet
-    // Characters tableview reference
+    // Reference for tableview
     @IBOutlet weak var charactersTableView: UITableView!
-    
+    // Reference for character view model
     let viewModel = CharactersViewModel()
-    
+    // Reference for character model
     var characters: [CharactersModel]?
     
     //MARK: - Life Cycle
@@ -28,20 +28,8 @@ class CharactersListViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         loadData()
     }
+    
     //MARK: - PRIVATE
-    fileprivate func setNavigtionBarItems() {
-        if #available(iOS 13.0, *) {
-            let appearance = UINavigationBarAppearance()
-            appearance.backgroundColor = .red
-            navigationController?.navigationBar.standardAppearance = appearance
-            navigationController?.navigationBar.scrollEdgeAppearance = appearance
-            navigationController?.navigationBar.tintColor = .white
-        } else {
-            // Fallback on earlier versions
-            navigationController?.navigationBar.tintColor = .white
-            navigationController?.navigationBar.barTintColor = .red
-        }
-    }
     private func loadData() {
        if NetworkReachability.isConnection() {
            SpinnerView.shared.showActivityIndicator(uiView: self.view)
@@ -53,6 +41,17 @@ class CharactersListViewController: UIViewController {
                    self.charactersTableView.reloadData()
                }
            })
+           
+           viewModel.characterError.addObserver(self, completionHandler: { [weak self] in
+               guard let self = self else { return }
+               DispatchQueue.main.async {
+                   SpinnerView.shared.hideActivityIndicator(uiView: self.view)
+                   if let errorLocalized = self.viewModel.characterError.value?.localizedDescription {
+                       AlertManager.showAlertView(alertTitle: "", alertMsg: errorLocalized, view: self)
+                   }
+               }
+           })
+           
         }else{
             AlertManager.showAlertView(alertTitle: "", alertMsg: "No Internet Connection, Please try again!", view: self)
         }

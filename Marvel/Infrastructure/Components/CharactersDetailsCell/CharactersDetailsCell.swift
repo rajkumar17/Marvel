@@ -9,21 +9,15 @@ import UIKit
 
 class CharactersDetailsCell: UITableViewCell {
 
-    // Characters name reference
+    // An instance of characterNameLabel? which will be used for holding the character name
     @IBOutlet weak var characterNameLabel: UILabel!
-    // Characters description reference
+    // An instance of characterNameLabel? which will be used for holding the character description
     @IBOutlet weak var characterDescriptionLabel: UILabel!
-    // Characters imageview reference
+    // An instance of characterNameLabel? which will be used for holding the character imageview
     @IBOutlet weak var imgView: MarvelImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     // Method to Configure the cell
     func setupConfigureCell(name: String, description: String, thumbImagePath: String) {

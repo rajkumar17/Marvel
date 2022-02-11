@@ -7,17 +7,17 @@
 
 import Foundation
 import UIKit
+//
+//enum APIStatus: Error {
+//  case noData
+//  case networkFailure
+//  case unAuthorized
+//  case serverError
+//  case invalidRequest
+//  case invalidUser
+//}
 
-enum APIStatus: Error {
-  case noData
-  case networkFailure
-  case unAuthorized
-  case serverError
-  case invalidRequest
-  case invalidUser
-}
-
-typealias completionHandler = ((Result<Data?,APIStatus>) -> Void)
+typealias completionHandler = ((Result<Data,Error>)->Void)
 
 enum HTTPCustomMethod: String {
   case get = "GET"
@@ -42,17 +42,20 @@ class APIServices {
     
     //Method request to serice to fetch the response
     private func callBackResponse(data: Data?, response: URLResponse?, error: Error?, completionHandler: @escaping (completionHandler)) {
-        if(error == nil) {
-            completionHandler(.failure(.networkFailure))
-        } else {
+        
+        if let error = error {
+            completionHandler(.failure(error))
+        }
             guard let httpResponse = response as? HTTPURLResponse,
                         (200...299).contains(httpResponse.statusCode) else {
                 print("Error with the response, unexpected status code: \(String(describing: response))")
-                completionHandler(.failure(.invalidRequest))
+                completionHandler(.failure(error!))
                 return
             }
-            completionHandler(.success(data))
-        }
+            guard let responseData = data else {
+                return
+            }
+            completionHandler(.success(responseData))
     }
     
     private func getURLRequest(method: HTTPCustomMethod,
@@ -70,15 +73,17 @@ class APIServices {
         guard let request = getURLRequest(method: method, urlString: urlString) else {
             return
         }
-        let task = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
+        
+        let task = sessionConfiguration?.dataTask(with: request) { [weak self] data, response, error in
            self?.callBackResponse(data: data, response: response, error: error) { result in
-                if let data = data {
-                    completion(.success(data))
-                } else {
-                    completion(.failure(.invalidRequest))
-                }
-            }
+               switch result {
+                    case .success(let data):
+                        completion(.success(data))
+                    case .failure(let error):
+                        completion(.failure(error))
+               }
+           }
         }
-        task.resume()
+        task?.resume()
     }
 }

@@ -10,10 +10,15 @@ import UIKit
 class CharactersCell: UITableViewCell {
 
     //MARK:- IBOutlet
+    // An instance of charactersImageView? which will be used for holding the character imageview
     @IBOutlet weak var charactersImageView: MarvelImageView!
+    // An instance of charactersNameLabel? which will be used for holding the character name
     @IBOutlet weak var charactersNameLabel: UILabel!
+    // An instance of charactersDesciptionLabel? which will be used for holding the character description reference
     @IBOutlet weak var charactersDesciptionLabel: UILabel!
+    // An instance of containerCharactersView? which will be used for holding the character container view
     @IBOutlet weak var containerCharactersView: UIView!
+    // An instance of charactersView? which will be used for holding the character view
     @IBOutlet weak var charactersView: UIView!
     
     override func awakeFromNib() {
@@ -21,24 +26,17 @@ class CharactersCell: UITableViewCell {
         // Initialization code
         setupViewShadow()
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     //MARK:- PRIVATE
     // Method to setup the shodaw and corner radius
     private func setupViewShadow() {
-        containerCharactersView.layer.shadowColor = UIColor.black.withAlphaComponent(0.2).cgColor
-        containerCharactersView.layer.shadowOffset = CGSize(width: 4, height: 4)
-        containerCharactersView.layer.shadowOpacity = 1.0
-        containerCharactersView.layer.shadowRadius = 5.0
-        containerCharactersView.layer.cornerRadius = 12.5
+        
+        containerCharactersView.addShadow(shadowColor: UIColor.black.withAlphaComponent(0.2).cgColor)
+        containerCharactersView.applyingRoundedCornersView()
         containerCharactersView.layer.masksToBounds = false
         
-        charactersView.layer.cornerRadius = 12.5
+        charactersView.applyingRoundedCornersView()
         charactersView.clipsToBounds = true
+        
     }
     //MARK:- PUBLIC
     // Method to Configure the cell

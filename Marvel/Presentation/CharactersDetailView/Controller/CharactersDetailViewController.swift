@@ -12,15 +12,7 @@ class CharactersDetailViewController: UIViewController {
     //MARK:- IBOutlets
     // Characters character tableview reference
     @IBOutlet weak var characterDetailsTableView:UITableView!
-    // Characters character name reference
-    @IBOutlet weak var characterNameLabel: UILabel!
-    // Characters description reference
-    @IBOutlet weak var characterDesciptionLabel: UILabel!
-    // Characters imageview reference
-    @IBOutlet weak var imgView: UIImageView!
-    
     var getCharactersID: Int?
-    
     let viewModel = CharactersDetailsViewModel()
     
     //MARK:- Life cycle
@@ -46,6 +38,15 @@ class CharactersDetailViewController: UIViewController {
                 DispatchQueue.main.async {
                     SpinnerView.shared.hideActivityIndicator(uiView: self.view)
                     self.characterDetailsTableView.reloadData()
+                }
+            })
+            viewModel.characterError.addObserver(self, completionHandler: { [weak self] in
+                guard let self = self else { return }
+                DispatchQueue.main.async {
+                    SpinnerView.shared.hideActivityIndicator(uiView: self.view)
+                    if let errorLocalized = self.viewModel.characterError.value?.localizedDescription {
+                        AlertManager.showAlertView(alertTitle: "", alertMsg: errorLocalized, view: self)
+                    }
                 }
             })
          }else{
