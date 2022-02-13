@@ -10,6 +10,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SpinnerViewController" customModule="Marvel" customModuleProvider="target">
             <connections>
                 <outlet property="activityIndicator" destination="8dh-0n-Kwo" id="6AJ-wT-CIg"/>
+                <outlet property="loaderView" destination="s36-Qs-bNL" id="alO-qb-9GL"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,30 +20,27 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s36-Qs-bNL">
-                    <rect key="frame" x="132" y="384" width="150" height="150"/>
+                    <rect key="frame" x="147" y="388" width="120" height="120"/>
                     <subviews>
                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="8dh-0n-Kwo">
-                            <rect key="frame" x="57" y="57" width="36" height="36"/>
+                            <rect key="frame" x="41.5" y="41.5" width="37" height="37"/>
                             <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </activityIndicatorView>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.41949503311258279" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="8dh-0n-Kwo" firstAttribute="centerY" secondItem="s36-Qs-bNL" secondAttribute="centerY" id="28z-eV-mUq"/>
-                        <constraint firstItem="8dh-0n-Kwo" firstAttribute="leading" secondItem="s36-Qs-bNL" secondAttribute="leading" constant="57" id="Apf-YX-UU5"/>
-                        <constraint firstItem="8dh-0n-Kwo" firstAttribute="centerX" secondItem="s36-Qs-bNL" secondAttribute="centerX" id="KDr-GN-xy1"/>
-                        <constraint firstItem="8dh-0n-Kwo" firstAttribute="top" secondItem="s36-Qs-bNL" secondAttribute="top" constant="57" id="fAA-VK-Te4"/>
-                        <constraint firstAttribute="trailing" secondItem="8dh-0n-Kwo" secondAttribute="trailing" constant="57" id="oho-jA-dbV"/>
+                        <constraint firstItem="8dh-0n-Kwo" firstAttribute="centerX" secondItem="s36-Qs-bNL" secondAttribute="centerX" id="0dG-rX-aE5"/>
+                        <constraint firstItem="8dh-0n-Kwo" firstAttribute="centerY" secondItem="s36-Qs-bNL" secondAttribute="centerY" id="6Xd-cx-qUJ"/>
+                        <constraint firstAttribute="height" constant="120" id="fW1-gc-Tv2"/>
                     </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" white="0.33333333333333331" alpha="0.63162251655629142" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="0.33333333333333331" alpha="0.30561879139072845" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="s36-Qs-bNL" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="340" id="KjK-Ic-8O7"/>
-                <constraint firstItem="s36-Qs-bNL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="132" id="Yui-7C-sxK"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="s36-Qs-bNL" secondAttribute="bottom" constant="328" id="l0R-dS-TZl"/>
-                <constraint firstItem="s36-Qs-bNL" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="pdb-7a-eRc"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="s36-Qs-bNL" secondAttribute="trailing" constant="147" id="dfI-yt-PmN"/>
+                <constraint firstItem="s36-Qs-bNL" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="344" id="p8d-jO-ZAr"/>
+                <constraint firstItem="s36-Qs-bNL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="147" id="qV3-MU-9la"/>
             </constraints>
             <point key="canvasLocation" x="139" y="85"/>
         </view>

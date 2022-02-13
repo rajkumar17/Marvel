@@ -7,17 +7,16 @@
 
 import Foundation
 import UIKit
-//
-//enum APIStatus: Error {
-//  case noData
-//  case networkFailure
-//  case unAuthorized
-//  case serverError
-//  case invalidRequest
-//  case invalidUser
-//}
 
-typealias completionHandler = ((Result<Data,Error>)->Void)
+enum APIStatus: Error {
+  case noData
+  case networkFailure
+  case unAuthorized
+  case serverError
+  case invalidRequest
+}
+
+typealias completionHandler = ((Result<Data,APIStatus>)->Void)
 
 enum HTTPCustomMethod: String {
   case get = "GET"
@@ -43,19 +42,23 @@ class APIServices {
     //Method request to serice to fetch the response
     private func callBackResponse(data: Data?, response: URLResponse?, error: Error?, completionHandler: @escaping (completionHandler)) {
         
-        if let error = error {
-            completionHandler(.failure(error))
+        guard let statusCode = (response as? HTTPURLResponse)?.statusCode else {
+            completionHandler(.failure(.networkFailure))
+              return
         }
-            guard let httpResponse = response as? HTTPURLResponse,
-                        (200...299).contains(httpResponse.statusCode) else {
-                print("Error with the response, unexpected status code: \(String(describing: response))")
-                completionHandler(.failure(error!))
+        switch statusCode {
+        case 200...299:
+            guard let data = data else {
+                completionHandler(.failure(.noData))
                 return
             }
-            guard let responseData = data else {
-                return
-            }
-            completionHandler(.success(responseData))
+            completionHandler(.success(data))
+        case 400...499:
+            completionHandler(.failure(.unAuthorized))
+            break
+        default:
+            completionHandler(.failure(.serverError))
+        }
     }
     
     private func getURLRequest(method: HTTPCustomMethod,

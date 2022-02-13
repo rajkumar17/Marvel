@@ -16,7 +16,8 @@ class CharactersListViewController: UIViewController {
     let viewModel = CharactersViewModel()
     // Reference for character model
     var characters: [CharactersModel]?
-    
+    // Reference for Spinner view
+    let spinnerView = SpinnerViewController()
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,18 +27,18 @@ class CharactersListViewController: UIViewController {
         charactersTableView.register(UINib(nibName: CharactersCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: CharactersCell.reuseIdentifier)
     }
     override func viewDidAppear(_ animated: Bool) {
-        loadData()
+        self.loadData()
     }
     
     //MARK: - PRIVATE
     private func loadData() {
        if NetworkReachability.isConnection() {
-           SpinnerView.shared.showActivityIndicator(uiView: self.view)
+           self.showSpinnerView(viewController: spinnerView)
            viewModel.fetchCharactersList()
            viewModel.characters.addObserver(self, completionHandler: { [weak self] in
                guard let self = self else { return }
+               self.hideSpinnerView(viewController: self.spinnerView)
                DispatchQueue.main.async {
-                   SpinnerView.shared.hideActivityIndicator(uiView: self.view)
                    self.charactersTableView.reloadData()
                }
            })
@@ -45,13 +46,12 @@ class CharactersListViewController: UIViewController {
            viewModel.characterError.addObserver(self, completionHandler: { [weak self] in
                guard let self = self else { return }
                DispatchQueue.main.async {
-                   SpinnerView.shared.hideActivityIndicator(uiView: self.view)
-                   if let errorLocalized = self.viewModel.characterError.value?.localizedDescription {
+                   self.hideSpinnerView(viewController: self.spinnerView)
+                   if let errorLocalized = self.viewModel.characterError.value {
                        AlertManager.showAlertView(alertTitle: "", alertMsg: errorLocalized, view: self)
                    }
                }
            })
-           
         }else{
             AlertManager.showAlertView(alertTitle: "", alertMsg: "No Internet Connection, Please try again!", view: self)
         }

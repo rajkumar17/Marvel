@@ -7,7 +7,7 @@
 
 import Foundation
 
-typealias completion = (Result<CharactersModel?,Error>)->Void
+typealias completion = (Result<CharactersModel?,APIStatus>)->Void
 
 protocol MarvalCharactersProtocol {
     func getMarvalCharacters(completion: @escaping (completion))

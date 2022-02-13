@@ -15,7 +15,7 @@ class CharactersDetailsViewModel {
     // Reference for CharactersModel
     var characterDetails:  DynamicValue<CharactersModel?> = DynamicValue(nil)
     // Reference for Characters error
-    var characterError:  DynamicValue<Error?> = DynamicValue(nil)
+    var characterError:  DynamicValue<String?> = DynamicValue(nil)
     
     // Method to fetch the characters list
     func fetchCharactersList(charactersID: Int) {
@@ -25,11 +25,25 @@ class CharactersDetailsViewModel {
                 case .success(let data):
                     self.characterDetails.value = data
                 case .failure(let error):
-                self.characterError.value = error
+                self.getFailureCaseErrorMessage(error: error)
             }
         })
     }
 
+    private func getFailureCaseErrorMessage(error: APIStatus){
+        switch error {
+        case .noData:
+            self.characterError.value = "Data Not Found!"
+        case .networkFailure:
+            self.characterError.value = "Network not found!"
+        case .unAuthorized:
+            self.characterError.value = "Authorized Failed!"
+        case .serverError:
+            self.characterError.value = "Server Error. Please try again!"
+        case .invalidRequest:
+            self.characterError.value = "Invalid Request!"
+        }
+    }
     // Method to get a results array
     func characterDetailsData() -> [ResultData]? {
         return characterDetails.value?.data?.results

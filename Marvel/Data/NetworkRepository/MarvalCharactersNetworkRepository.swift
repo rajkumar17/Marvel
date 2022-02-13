@@ -27,7 +27,7 @@ class MarvalCharactersNetworkRepository: MarvalCharactersNetworkRepositoryProtoc
     }
 
     func getMarvalCharacterDetails(characterID: Int, completion: @escaping (completion)) {
-        let characterDetailsString = "\(AppConfiguration.shared.apiBaseURL)characters/\(characterID)\(AppConfiguration.shared.path)"
+        let characterDetailsString = "\(AppConfiguration.shared.apiBaseURL)characters/\(characterID)?\(AppConfiguration.shared.path)"
         APIServices.shared.requestNetworkAPI(method: .get, urlString: characterDetailsString, completion: { result in
             switch result {
               case .success(let data):

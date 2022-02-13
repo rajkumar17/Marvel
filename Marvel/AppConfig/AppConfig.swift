@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CryptoKit
 
 final class AppConfiguration {
     
@@ -22,11 +23,11 @@ final class AppConfiguration {
     }()
     // An reference for characters url
     lazy var charactersUrl: String = {
-       return "\(apiBaseURL)characters\(path)"
+       return "\(apiBaseURL)characters?\(path)"
     }()
     // An reference for path
     lazy var path: String = {
-        return "?ts=\(AppConfiguration.dashedDate.string(from: Date()))&apikey=\(AppConfiguration.publicKey)&hash=b9effb6c7ac73fd8a46ecfda4b9eb630"
+        return "ts=\(AppConfiguration.dashedDate.string(from: Date()))&apikey=\(AppConfiguration.publicKey)&hash=\(md5Hash)"
     }()
     // An reference for public key
     static let publicKey = "63263ce283a3d8d98e8343d67feaab10"
@@ -41,4 +42,13 @@ final class AppConfiguration {
         return formatter
     }()
     
+    lazy var md5Hash: String = {
+        return convertToMd5Hash("\(AppConfiguration.dashedDate.string(from: Date()))\(AppConfiguration.privateKey)\(AppConfiguration.publicKey)")
+    }()
+    func convertToMd5Hash(_ source: String) -> String {
+        let digest = Insecure.MD5.hash(data: source.data(using: .utf8) ?? Data())
+        return digest.map {
+            String(format: "%02hhx", $0)
+        }.joined()
+    }
 }

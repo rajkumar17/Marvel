@@ -10,10 +10,14 @@ import UIKit
 class CharactersDetailViewController: UIViewController {
 
     //MARK:- IBOutlets
-    // Characters character tableview reference
+    // Characters tableview reference
     @IBOutlet weak var characterDetailsTableView:UITableView!
+    // Reference for characters ID
     var getCharactersID: Int?
+    // Reference for view model
     let viewModel = CharactersDetailsViewModel()
+    // Reference for Spinner view
+    let spinnerView = SpinnerViewController()
     
     //MARK:- Life cycle
     override func viewDidLoad() {
@@ -28,23 +32,23 @@ class CharactersDetailViewController: UIViewController {
     //MARK: - PRIVATE
     private func loadData() {
         if NetworkReachability.isConnection() {
-            SpinnerView.shared.showActivityIndicator(uiView: self.view)
+            self.showSpinnerView(viewController: spinnerView)
             guard let characterID = getCharactersID else {
                 return
             }
             viewModel.fetchCharactersList(charactersID: characterID)
             viewModel.characterDetails.addObserver(self, completionHandler: { [weak self] in
                 guard let self = self else { return }
+                self.hideSpinnerView(viewController: self.spinnerView)
                 DispatchQueue.main.async {
-                    SpinnerView.shared.hideActivityIndicator(uiView: self.view)
                     self.characterDetailsTableView.reloadData()
                 }
             })
             viewModel.characterError.addObserver(self, completionHandler: { [weak self] in
                 guard let self = self else { return }
                 DispatchQueue.main.async {
-                    SpinnerView.shared.hideActivityIndicator(uiView: self.view)
-                    if let errorLocalized = self.viewModel.characterError.value?.localizedDescription {
+                    self.hideSpinnerView(viewController: self.spinnerView)
+                    if let errorLocalized = self.viewModel.characterError.value {
                         AlertManager.showAlertView(alertTitle: "", alertMsg: errorLocalized, view: self)
                     }
                 }
@@ -53,6 +57,7 @@ class CharactersDetailViewController: UIViewController {
              AlertManager.showAlertView(alertTitle: "", alertMsg: "No Internet Connection, Please try again!", view: self)
          }
     }
+    
 }
 //MARK: - Extension
 extension CharactersDetailViewController: UITableViewDataSource {

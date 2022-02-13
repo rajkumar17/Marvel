@@ -73,11 +73,6 @@
                                     <constraint firstAttribute="trailing" secondItem="eWa-JU-S9w" secondAttribute="trailing" id="wUO-Pt-n2B"/>
                                     <constraint firstItem="eWa-JU-S9w" firstAttribute="top" secondItem="mEm-uS-QXU" secondAttribute="top" id="yIv-yI-Lmb"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -87,17 +82,6 @@
                             <constraint firstAttribute="trailing" secondItem="mEm-uS-QXU" secondAttribute="trailing" id="fqH-Be-2dy"/>
                             <constraint firstItem="mEm-uS-QXU" firstAttribute="top" secondItem="r6b-fC-7MA" secondAttribute="top" id="xYb-MF-D8y"/>
                         </constraints>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                <real key="value" value="0.0"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                <real key="value" value="0.0"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                <size key="value" width="0.0" height="0.0"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
