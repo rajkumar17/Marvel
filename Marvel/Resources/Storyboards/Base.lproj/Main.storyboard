@@ -34,6 +34,7 @@
                             <constraint firstItem="MAm-Rh-nsi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="w7m-iC-f63"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" title="Characters" id="PnY-CJ-Wx7"/>
                     <connections>
                         <outlet property="charactersTableView" destination="MAm-Rh-nsi" id="aM5-82-nU7"/>
