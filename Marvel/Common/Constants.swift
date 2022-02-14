@@ -10,6 +10,8 @@ import Foundation
 struct Constants {
     
     struct APIStatusError {
+        
+    static let noInternetConnection = "No Internet Connection, Please try again!"
         //MARK:- Method
         // Parameter: error status
      static func getFailureCaseErrorMessage(error: APIStatus) -> String{

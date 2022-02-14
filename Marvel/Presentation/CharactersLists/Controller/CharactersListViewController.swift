@@ -53,7 +53,7 @@ class CharactersListViewController: UIViewController {
                }
            })
         }else{
-            AlertManager.showAlertView(alertTitle: "", alertMsg: "No Internet Connection, Please try again!", view: self)
+            AlertManager.showAlertView(alertTitle: "", alertMsg: Constants.APIStatusError.noInternetConnection, view: self)
         }
     }
 }
