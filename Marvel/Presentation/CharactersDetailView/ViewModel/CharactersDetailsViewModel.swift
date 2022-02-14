@@ -17,22 +17,6 @@ class CharactersDetailsViewModel {
     // Reference for Characters error
     var characterError:  DynamicValue<String?> = DynamicValue(nil)
 
-    //MARK:- Private Method
-    // Parameter: error status
-    private func getFailureCaseErrorMessage(error: APIStatus){
-        switch error {
-        case .noData:
-            self.characterError.value = "Data Not Found!"
-        case .networkFailure:
-            self.characterError.value = "Network not found!"
-        case .unAuthorized:
-            self.characterError.value = "Authorized Failed!"
-        case .serverError:
-            self.characterError.value = "Server Error. Please try again!"
-        case .invalidRequest:
-            self.characterError.value = "Invalid Request!"
-        }
-    }
     //MARK:- Public Method
     // Method to fetch the characters list
     // Parameter: charactersID
@@ -43,7 +27,7 @@ class CharactersDetailsViewModel {
                 case .success(let data):
                     self.characterDetails.value = data
                 case .failure(let error):
-                self.getFailureCaseErrorMessage(error: error)
+                self.characterError.value = Constants.APIStatusError.getFailureCaseErrorMessage(error:error)
             }
         })
     }

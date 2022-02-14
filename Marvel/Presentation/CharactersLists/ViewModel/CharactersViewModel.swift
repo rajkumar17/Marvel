@@ -17,23 +17,6 @@ class CharactersViewModel {
     // Reference for Characters error
     var characterError:  DynamicValue<String?> = DynamicValue(nil)
     
-    //MARK:- Private Method
-    // Method to get a error message based error status
-    // Parameter: error status
-    private func getFailureCaseErrorMessage(error: APIStatus){
-        switch error {
-        case .noData:
-            self.characterError.value = "Data Not Found!"
-        case .networkFailure:
-            self.characterError.value = "Network not found!"
-        case .unAuthorized:
-            self.characterError.value = "Authorized Failed!"
-        case .serverError:
-            self.characterError.value = "Server Error. Please try again!"
-        case .invalidRequest:
-            self.characterError.value = "Invalid Request!"
-        }
-    }
     //MARK:- Public Methods
     // Method to fetch the characters list
     func fetchCharactersList() {
@@ -43,7 +26,7 @@ class CharactersViewModel {
                 case .success(let data):
                     self.characters.value = data
                 case .failure(let error):
-                self.getFailureCaseErrorMessage(error: error)
+                self.characterError.value = Constants.APIStatusError.getFailureCaseErrorMessage(error:error)
             }
         })
     }
@@ -85,8 +68,6 @@ class CharactersViewModel {
         }
         return "\(thumbImagepath).\(imageExtension)"
     }
-    
-    
     // Method to get a description for a given index
     // - Parameter indexPath: index path
     // Return: string
