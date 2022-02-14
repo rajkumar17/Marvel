@@ -22,7 +22,6 @@ class CharactersDetailViewController: UIViewController {
     //MARK:- Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         characterDetailsTableView.register(UINib(nibName: CharactersDetailsCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: CharactersDetailsCell.reuseIdentifier)
         // Do any additional setup after loading the view.
     }
@@ -34,6 +33,7 @@ class CharactersDetailViewController: UIViewController {
         if NetworkReachability.isConnection() {
             self.showSpinnerView(viewController: spinnerView)
             guard let characterID = getCharactersID else {
+                print("CharacterID not found")
                 return
             }
             viewModel.fetchCharactersList(charactersID: characterID)
@@ -68,7 +68,7 @@ extension CharactersDetailViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CharactersDetailsCell.reuseIdentifier, for: indexPath) as? CharactersDetailsCell else {
-            fatalError("")
+            fatalError("CharactersDetailsCell is not load")
         }
         let name = viewModel.getNameFor(indexPath)
         let description = viewModel.getDescriptionFor(indexPath)

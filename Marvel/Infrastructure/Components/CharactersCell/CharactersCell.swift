@@ -29,23 +29,28 @@ class CharactersCell: UITableViewCell {
     //MARK:- PRIVATE
     // Method to setup the shodaw and corner radius
     private func setupViewShadow() {
-        
         containerCharactersView.addShadow(shadowColor: UIColor.black.withAlphaComponent(0.2).cgColor)
         containerCharactersView.applyingRoundedCornersView()
         containerCharactersView.layer.masksToBounds = false
-        
         charactersView.applyingRoundedCornersView()
         charactersView.clipsToBounds = true
-        
     }
     //MARK:- PUBLIC
     // Method to Configure the cell
-    func setupConfigureCell(name: String, description: String, thumbImagePath: String) {
+    // Parameter: name, description, thumbnail path
+    func setupConfigureCell(name: String?, description: String?, thumbImagePath: String?) {
         charactersNameLabel.text = name
-        charactersDesciptionLabel.text = description
-        charactersDesciptionLabel.isHidden = (description.isEmpty ? true : false)
-        DispatchQueue.main.async {
-            self.charactersImageView.loadRemoteImageFrom(urlString: thumbImagePath)
+        if let description = description {
+            charactersDesciptionLabel.text = description
+            charactersDesciptionLabel.isHidden = false
+        } else {
+            charactersDesciptionLabel.isHidden = true
+        }
+        
+        if let imagePath = thumbImagePath {
+            DispatchQueue.main.async {
+                self.charactersImageView.loadRemoteImageFrom(urlString: imagePath)
+            }
         }
     }
 }

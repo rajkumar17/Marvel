@@ -9,27 +9,16 @@ import Foundation
 import UIKit
 
 class CharactersDetailsViewModel {
-    
+    //MARK:- Variable and Constant
     // Reference for usecase of marvelCharacters
     let useCase = MarvalCharactersUsecase()
     // Reference for CharactersModel
     var characterDetails:  DynamicValue<CharactersModel?> = DynamicValue(nil)
     // Reference for Characters error
     var characterError:  DynamicValue<String?> = DynamicValue(nil)
-    
-    // Method to fetch the characters list
-    func fetchCharactersList(charactersID: Int) {
-        useCase.getMarvalCharacterDetails(characterID: charactersID, completion: { [weak self] (characterDetailsModel) in
-            guard let self = self else { return }
-            switch characterDetailsModel {
-                case .success(let data):
-                    self.characterDetails.value = data
-                case .failure(let error):
-                self.getFailureCaseErrorMessage(error: error)
-            }
-        })
-    }
 
+    //MARK:- Private Method
+    // Parameter: error status
     private func getFailureCaseErrorMessage(error: APIStatus){
         switch error {
         case .noData:
@@ -44,31 +33,53 @@ class CharactersDetailsViewModel {
             self.characterError.value = "Invalid Request!"
         }
     }
+    //MARK:- Public Method
+    // Method to fetch the characters list
+    // Parameter: charactersID
+    func fetchCharactersList(charactersID: Int) {
+        useCase.getMarvalCharacterDetails(characterID: charactersID, completion: { [weak self] (characterDetailsModel) in
+            guard let self = self else { return }
+            switch characterDetailsModel {
+                case .success(let data):
+                    self.characterDetails.value = data
+                case .failure(let error):
+                self.getFailureCaseErrorMessage(error: error)
+            }
+        })
+    }
     // Method to get a results array
+    // Return: array of ResultData
     func characterDetailsData() -> [ResultData]? {
         return characterDetails.value?.data?.results
     }
- 
     // Method to get a name for a given index
     // - Parameter indexPath: index path
-    func getNameFor(_ indexPath: IndexPath) -> String {
-        guard let name = characterDetailsData()?.getOrNull(indexPath.row)?.name else { return "" }
+    // Return: string
+    func getNameFor(_ indexPath: IndexPath) -> String? {
+        guard let name = characterDetailsData()?.getOrNull(indexPath.row)?.name else {
+          print("Character name is empty")
+          return nil
+        }
         return name
     }
-    
     // Method to get a Thubnail Image path for a given index
     // - Parameter indexPath: index path
-    func getthumbnailImageFor(_ indexPath: IndexPath) -> String {
-        guard let thumbnailImage = characterDetailsData()?.getOrNull(indexPath.row)?.thumbnail else { return "" }
-        if let thumbImagepath = thumbnailImage.path, let imageExtension = thumbnailImage.imageExtension {
-            return "\(thumbImagepath).\(imageExtension)"
+    // Return: string
+    func getthumbnailImageFor(_ indexPath: IndexPath) -> String? {
+        guard let thumbnailImage = characterDetailsData()?.getOrNull(indexPath.row)?.thumbnail,let thumbImagepath = thumbnailImage.path, let imageExtension = thumbnailImage.imageExtension else {
+            print("thumbnailImage is empty")
+            return nil
         }
-        return ""
+        return "\(thumbImagepath).\(imageExtension)"
     }
     // Method to get a description for a given index
     // - Parameter indexPath: index path
-    func getDescriptionFor(_ indexPath: IndexPath) -> String {
-        guard let description = characterDetailsData()?.getOrNull(indexPath.row)?.description else { return "" }
+    // Return: string
+    func getDescriptionFor(_ indexPath: IndexPath) -> String? {
+        guard let description = characterDetailsData()?.getOrNull(indexPath.row)?.description else {
+            print("description is empty")
+            return nil
+        }
         return description
     }
 }

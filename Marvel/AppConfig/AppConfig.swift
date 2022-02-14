@@ -41,7 +41,7 @@ final class AppConfiguration {
         formatter.locale = Locale.current
         return formatter
     }()
-    
+    // An reference for md5Hash sting from convert md5hash string
     lazy var md5Hash: String = {
         return convertToMd5Hash("\(AppConfiguration.dashedDate.string(from: Date()))\(AppConfiguration.privateKey)\(AppConfiguration.publicKey)")
     }()

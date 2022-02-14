@@ -9,8 +9,9 @@ import UIKit
 
 class SpinnerViewController: UIViewController {
 
-    // An instance of charactersImageView? which will be used for holding the character imageview
+    // An instance of activityIndicator? which will be used for holding the activity indicator
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    // An instance of loaderView? which will be used for holding the loader View
     @IBOutlet weak var loaderView: UIView!
     
     override func viewDidLoad() {

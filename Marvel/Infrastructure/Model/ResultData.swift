@@ -13,10 +13,4 @@ struct ResultData: Codable {
     let modified:String?
     let thumbnail: Thumbnail?
     let resourceURI: String?
-
-    enum CodingKeys: String, CodingKey {
-        case id, name
-        case description
-        case modified, thumbnail, resourceURI
-    }
 }

@@ -27,10 +27,8 @@ enum HTTPCustomMethod: String {
 }
 
 class APIServices {
- 
     //MARK:- Constant
     static let shared = APIServices()
-    
     //MARK:- PRIVATE
     private var sessionConfiguration: URLSession? {
         let configuration = URLSessionConfiguration.default
@@ -38,13 +36,14 @@ class APIServices {
         configuration.timeoutIntervalForResource = 180
         return URLSession(configuration: configuration)
     }
-    
-    //Method request to serice to fetch the response
+    // Method request to serice to fetch the response
+    // Parameter: data, response, error
+    // Return: completionHandler
     private func callBackResponse(data: Data?, response: URLResponse?, error: Error?, completionHandler: @escaping (completionHandler)) {
         
         guard let statusCode = (response as? HTTPURLResponse)?.statusCode else {
             completionHandler(.failure(.networkFailure))
-              return
+          return
         }
         switch statusCode {
         case 200...299:
@@ -60,20 +59,27 @@ class APIServices {
             completionHandler(.failure(.serverError))
         }
     }
-    
+    // Method to genetare the urlRequest
+    // Parameter: method, urlString
+    // Return: URLRequest
     private func getURLRequest(method: HTTPCustomMethod,
                        urlString: String) -> URLRequest? {
         guard let url = URL(string: urlString) else {
+            print("API url is empty")
             return nil
         }
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
         return request
     }
+    // Method to make a api request and response handle
+    // Parameter: method, urlString
+    // Return: completionHandler
     func requestNetworkAPI(method: HTTPCustomMethod,
                            urlString: String,
                            completion: @escaping (completionHandler)) {
         guard let request = getURLRequest(method: method, urlString: urlString) else {
+            print("API request is empty")
             return
         }
         

@@ -13,7 +13,7 @@ class MarvelImageView: UIImageView {
     
     let imageCache = NSCache<AnyObject, AnyObject>()
     let activityView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.medium)
-    
+    // Method to load image from url
     func loadRemoteImageFrom(urlString: String) {
       image = nil
       activityView.center = self.center
@@ -28,6 +28,7 @@ class MarvelImageView: UIImageView {
       }
         
       guard let url = URL(string: urlString) else {
+          print("image urlString is empty")
           return
       }
         

@@ -8,7 +8,9 @@
 import Foundation
 
 class ResponseHandler {
-    
+   // Method to decode the response data to model
+   // Parameter: responseData, modelType
+   // Returns: modelType
    class func fetchResponse<T: Codable>(responseData: Data, modelType: T.Type) -> T?  {
        do {
            let modelObject = try JSONDecoder().decode(T.self, from: responseData)
