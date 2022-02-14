@@ -16,7 +16,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="252" image="cartoonIcon" translatesAutoresizingMaskIntoConstraints="NO" id="gAE-Oo-PYT" customClass="MarvelImageView" customModule="Marvel" customModuleProvider="target">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="gAE-Oo-PYT" customClass="MarvelImageView" customModule="Marvel" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="450"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="450" id="M6X-zs-nbH"/>
@@ -59,7 +59,4 @@
             <point key="canvasLocation" x="137.68115942028987" y="98.4375"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="cartoonIcon" width="300" height="210"/>
-    </resources>
 </document>

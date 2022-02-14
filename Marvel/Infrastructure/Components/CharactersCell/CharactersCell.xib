@@ -22,7 +22,7 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mEm-uS-QXU">
                                 <rect key="frame" x="0.0" y="0.0" width="290" height="270"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cartoonIcon" translatesAutoresizingMaskIntoConstraints="NO" id="eWa-JU-S9w" customClass="MarvelImageView" customModule="Marvel" customModuleProvider="target">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eWa-JU-S9w" customClass="MarvelImageView" customModule="Marvel" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="290" height="270"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -103,7 +103,4 @@
             <point key="canvasLocation" x="137.68115942028987" y="98.4375"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="cartoonIcon" width="300" height="210"/>
-    </resources>
 </document>
